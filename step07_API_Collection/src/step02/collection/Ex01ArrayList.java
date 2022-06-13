@@ -1,6 +1,8 @@
 package step02.collection;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import model.domain.Student;
 
@@ -43,6 +45,30 @@ public class Ex01ArrayList {
 //			
 //		}
 		
+		// ArrayList vs LinkedList
+		List arrayList = new ArrayList();
+		List ldkList = new LinkedList();
+		
+		// 
+		long startTime;
+		long endTime;
+		
+		// ArrayList
+		startTime =System.currentTimeMillis();
+		for (int i=0; i<100000;i++) {
+			arrayList.add(0, i);
+		}
+		endTime = System.currentTimeMillis();
+		System.out.println("ArrayList 데이터 삽입 시간은 "+(endTime - startTime) + "밀리 초입니다.");
+		
+		
+		// LinkedList
+		startTime =System.currentTimeMillis();
+		for (int i=0; i<100000;i++) {
+			ldkList.add(0,i);
+		}
+		endTime = System.currentTimeMillis();
+		System.out.println("LikedList 데이터 삽입 시간은 "+(endTime - startTime) + "밀리 초입니다.");
 	}
 
 }

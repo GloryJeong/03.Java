@@ -18,12 +18,14 @@ public class StudentController {
 			return true;
 		// 단일 검색
 		case 2:
+			System.out.println("----------단일검색--------------");
 			System.out.print("이름을 입력하세요: ");
 			name = scan.next();
 			EndView.printOne(StudentModel.oneSearch(name));
 			return true;
 		// 추가
 		case 3:
+			System.out.println("------------추가-------------");
 			System.out.print("이름을 입력하세요: ");
 			name = scan.next();
 			System.out.print("나이를 입력하세요: ");
@@ -34,6 +36,7 @@ public class StudentController {
 			return true;
 		// 삭제
 		case 4:
+			System.out.println("------------삭제-------------");
 			System.out.print("이름을 입력하세요: ");
 			name = scan.next();
 			result = StudentModel.removeStudent(name);
@@ -45,7 +48,11 @@ public class StudentController {
 			return true;
 		// 수정
 		case 5:
-			System.out.println("5");
+			System.out.println("------------수정-------------");
+			System.out.print("이름을 입력하세요: ");
+			name = scan.next();
+			StudentModel.oneSearch(name);
+			}
 			return true;
 		// 종료
 		case 6:

@@ -1,9 +1,7 @@
 package model.domain;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 public class Student {
 	private int stdNo;
@@ -18,6 +16,18 @@ public class Student {
 	@Override
 	public String toString() {
 		return "학번:"+stdNo+" 이름:"+name+" 나이:"+age;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	
 

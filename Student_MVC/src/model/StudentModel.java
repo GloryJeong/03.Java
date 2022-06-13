@@ -1,11 +1,14 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model.domain.Student;
 
 public class StudentModel {
 	static ArrayList<Student> studentList = new ArrayList<>();
+	static Scanner scan = new Scanner(System.in);
+	
 	
 	
 	
@@ -39,6 +42,15 @@ public class StudentModel {
 			return false;
 		}
 	}
-	
+	public static boolean update(String name) {
+		Student student = oneSearch(name);
+		if(student != null) {
+			System.out.print("수정할 이름을 입력 :");
+			String updateName = scan.next();
+			System.out.print("수정할 나이를 입력 :");
+			int updateAge = scan.nextInt();
+		}
+	}
+			
 
 }
