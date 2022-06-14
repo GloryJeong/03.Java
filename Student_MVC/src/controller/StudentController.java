@@ -51,7 +51,11 @@ public class StudentController {
 			System.out.println("------------수정-------------");
 			System.out.print("이름을 입력하세요: ");
 			name = scan.next();
-			StudentModel.oneSearch(name);
+			result=StudentModel.update(StudentModel.oneSearch(name));
+			if(result) {
+				System.out.println("수정 완료");
+			}else {
+				System.out.println("수정 실패");
 			}
 			return true;
 		// 종료

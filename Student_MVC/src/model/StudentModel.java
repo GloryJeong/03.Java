@@ -42,15 +42,18 @@ public class StudentModel {
 			return false;
 		}
 	}
-	public static boolean update(String name) {
-		Student student = oneSearch(name);
+	public static boolean update(Student student) {
+//		Student student = oneSearch(name);
 		if(student != null) {
 			System.out.print("수정할 이름을 입력 :");
 			String updateName = scan.next();
 			System.out.print("수정할 나이를 입력 :");
 			int updateAge = scan.nextInt();
+			student.setAge(updateAge);
+			student.setName(updateName);
+			return true;
+		}else {
+			return false;
 		}
 	}
-			
-
 }

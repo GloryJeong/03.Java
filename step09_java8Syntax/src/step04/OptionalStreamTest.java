@@ -12,7 +12,7 @@ import model.domain.Person;
 
 public class OptionalStreamTest {
 	public static void main(String[] args) {
-//		 Optional
+				//	Optional
 				// empty : 빈 Optional 객체 생성
 //				Optional<String> opt1 = Optional.empty();
 //				System.out.println(opt1);
@@ -77,6 +77,7 @@ public class OptionalStreamTest {
 		// collect 새로운 리스트로 만들어줌
 		
 		List<Integer> arr4 = Arrays.asList(1,2,3,3,3,4,5,5);
+		
 		System.out.println(arr4);
 		arr4.stream().collect(Collectors.toSet()).forEach(v-> System.out.println(v));
 		
@@ -125,7 +126,7 @@ public class OptionalStreamTest {
 		personList.add(yeonghun);
 		personList.add(myungyun);
 		
-		personList.stream().filter(v -> v.getMbti().matches("^i..j$")).forEach(System.out::println);
+		personList.stream().filter(v -> v.getMbti().matches("^i..j$")).forEach(System.out::println); 
 		System.out.println("");
 		personList.stream().filter(v -> v.getMbti().contains("i")).filter(v->v.getMbti().contains("j")).forEach(System.out::println);
 
