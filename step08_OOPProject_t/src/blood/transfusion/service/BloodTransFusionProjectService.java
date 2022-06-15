@@ -27,8 +27,8 @@ public class BloodTransFusionProjectService {
 	public ArrayList<BloodTransfusionProject> getProject(String projectName) throws NotExistException {
 //		BloodTransfusionProject project = null;
 		ArrayList<BloodTransfusionProject> selectProjectList =new ArrayList<BloodTransfusionProject>();
-		if(!this.projectVirtualData.getProjectList().isEmpty()) {
-			this.projectVirtualData.getProjectList().stream().filter(v->projectName.equals(v.getBtProjectName())).forEach(v->{
+		if(!projectVirtualData.getProjectList().isEmpty()) {
+			projectVirtualData.getProjectList().stream().filter(v->projectName.equals(v.getBtProjectName())).forEach(v->{
 				selectProjectList.add(v);});
 			if(selectProjectList.isEmpty()) {
 				throw new NotExistException(projectName+" 프로젝트는 없음");

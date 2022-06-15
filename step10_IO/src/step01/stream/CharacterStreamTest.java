@@ -19,29 +19,21 @@ public class CharacterStreamTest {
 		}
 		
 		//Reader
-		FileReader fr = null;
-		try {
-			fr = new FileReader("CharacterStream.txt");
-			
+//		FileReader frFileReader = null;
+		// try-with-resources
+		try (FileReader fr = new FileReader("CharacterStream.txt");) {
 			int data;
-			try {
-				while((data = fr.read()) != -1) {
-					System.out.println((char)data);
-				}
-			fr.close();
-			}catch(IOException e) {}
+			while ((data = fr.read()) != -1) {
+				System.out.println((char) data);
+			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				fr.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
+
+	}
 		
 		
 	}
-}
+
