@@ -18,17 +18,16 @@ public class RunningStartView {
 		
 		System.out.println("=====모든 프로젝트 검색=====");
 		controller.allBTProjects();
-		
 		System.out.println("=====특정 프로젝트 검색=====");
-		controller.projectView("B-!");
+		controller.projectView("bt1");
 		System.out.println("=====특정 프로젝트 추가=====");
 		controller.addProject(donor4,recipient4,newProject);
 		System.out.println("=====특정 프로젝트 수정=====");
-		controller.updateProject("AB-!","수정됨!!!!!");
-		controller.projectView("AB-");
+		controller.updateProject("bt4","수정됨!!!!!");
+		controller.projectView("bt4");
 		System.out.println("=====특정 프로젝트 삭제=====");
-		controller.deleteProject("AB-");
-		controller.projectView("AB-");
+//		controller.deleteProject("bt4");
+		controller.projectView("bt4");
 		
 	}
 }

@@ -33,28 +33,38 @@ public class BTService {
 	}
 	
 	//BTProject id로 검색
-	public BTProjectDTO getBTProject(String btProjectName) throws SQLException, NotExistException{
+	public BTProjectDTO getBTProject(String btProjectId) throws SQLException, NotExistException{
 //		notExistBTProject(btProjectName);
-		return BTProjectDAO.getBTProject(btProjectName);
+		return BTProjectDAO.getBTProject(btProjectId);
 	}
 	
 	//새로운 BTProject 저장
-	public boolean addBTProject(BTProjectDTO btProject) throws SQLException{
-		
+	public boolean addBTProject(DonorDTO newDonor,RecipientDTO newRecipient,BTProjectDTO btProject) throws SQLException, NotExistException, ExistException{
+		DonorDTO Donor = DonorDAO.getDonor(btProject.getDonorId());
+		RecipientDTO recipient = RecipientDAO.getRecipient(btProject.getRecipientId());
+		if(Donor == null) {
+			addDonor(newDonor);
+		}else {
+			System.out.println("이미있는 헌혈자");
+		}if(recipient == null) {
+			addRecipient(newRecipient);
+		}else {
+			System.out.println("이미 있는 수혈자");
+		}
 		return BTProjectDAO.addBTProject(btProject);
 	}
 	
 	//기존 BTProject 수정
-	public boolean updateBTProject(String btProjectName, String btProjectContent) throws SQLException, NotExistException{
-		notExistBTProject(btProjectName);
+	public boolean updateBTProject(String btProjectId, String btProjectContent) throws SQLException, NotExistException{
+		notExistBTProject(btProjectId);
 		
-		return BTProjectDAO.updateBTProjectbtProjectContent(btProjectName, btProjectContent);
+		return BTProjectDAO.updateBTProjectbtProjectContent(btProjectId, btProjectContent);
 	}
 	
 	//BTProject 삭제
-	public boolean deleteBTProject(String btProjectName) throws SQLException, NotExistException{
-		notExistBTProject(btProjectName);
-		return BTProjectDAO.deleteBTProject(btProjectName);
+	public boolean deleteBTProject(String btProjectId) throws SQLException, NotExistException{
+		notExistBTProject(btProjectId);
+		return BTProjectDAO.deleteBTProject(btProjectId);
 	}
 	
 	
@@ -69,7 +79,6 @@ public class BTService {
 	public boolean addDonor(DonorDTO newDonor) throws SQLException, NotExistException, ExistException {
 		DonorDTO donor = DonorDAO.getDonor(newDonor.getId());
 		if(donor == null) {
-			
 			return DonorDAO.addDonor(newDonor);
 		}else {
 			throw new ExistException("이미 있는 헌혈자 입니다.");

@@ -76,15 +76,15 @@ public class BTProjectDAO {
 		return false;
 	}
 	// 프로젝트 이름으로 프로젝트 컨텐트수정
-	public static boolean updateBTProjectbtProjectContent(String btProjectName, String btProjectContent) throws SQLException {
+	public static boolean updateBTProjectbtProjectContent(String btProjectId, String btProjectContent) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
 			
-			pstmt = con.prepareStatement("update bt_project set bt_content=? where bt_project_name=?");
+			pstmt = con.prepareStatement("update bt_project set bt_content=? where bt_project_id=?");
 			pstmt.setString(1, btProjectContent);
-			pstmt.setString(2, btProjectName);
+			pstmt.setString(2, btProjectId);
 			
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
@@ -97,13 +97,13 @@ public class BTProjectDAO {
 	}
 
 	// 프로젝트 이름으로 프로젝트 삭제
-	public static boolean deleteBTProject(String btProjectName) throws SQLException {
+	public static boolean deleteBTProject(String btProjectId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("delete from bt_project where bt_project_name=?");
-			pstmt.setString(1, btProjectName);
+			pstmt = con.prepareStatement("delete from bt_project where bt_project_Id=?");
+			pstmt.setString(1, btProjectId);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -115,7 +115,7 @@ public class BTProjectDAO {
 	}
 
 	// 프로젝트 이름으로 프로젝트 검색
-	public static BTProjectDTO getBTProject(String btProjectName) throws SQLException {
+	public static BTProjectDTO getBTProject(String btProjectId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -123,8 +123,8 @@ public class BTProjectDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from bt_project where bt_project_name=?");
-			pstmt.setString(1, btProjectName);
+			pstmt = con.prepareStatement("select * from bt_project where bt_project_id=?");
+			pstmt.setString(1, btProjectId);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				blood_transfusionUser = new BTProjectDTO(rset.getString(1), rset.getString(2), rset.getString(3),

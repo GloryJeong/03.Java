@@ -55,9 +55,9 @@ public class BTController {
 	// 새로운 프로젝트 저장 로직
 	public void addProject(DonorDTO donor,RecipientDTO recipient,BTProjectDTO newProject) {
 		try {
-			service.addDonor(donor);
-			service.addRecipient(recipient);
-			service.addBTProject(newProject);
+//			service.addDonor(donor);
+//			service.addRecipient(recipient);
+			service.addBTProject(donor,recipient,newProject);
 			RunningSuccessView.showSuccess("저장 성공!!!!");
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -70,9 +70,9 @@ public class BTController {
 	}
 	
 	// 특정 프로젝트 업데이트
-	public void updateProject(String BTProjectName,String btContent) {
+	public void updateProject(String BTProjectId,String btContent) {
 		try {
-			service.updateBTProject(BTProjectName, btContent);
+			service.updateBTProject(BTProjectId, btContent);
 			RunningSuccessView.showSuccess("업데이트 성공!!!!");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,19 +82,17 @@ public class BTController {
 	}
 	
 	// 특정 프로젝트 삭제
-	public void deleteProject(String BTProjectName)  {
+	public void deleteProject(String BTProjectId)  {
 		BTProjectDTO project = null;
 		String donorId = null;
 		String recipientId = null;
 		try {
-			project= service.getBTProject(BTProjectName);
+			project= service.getBTProject(BTProjectId);
 			if(project != null) {
 				donorId = project.getDonorId();
 				recipientId = project.getRecipientId();
 			}
-			service.deleteBTProject(BTProjectName);
-			service.deleteDonor(donorId);
-			service.deleteRecipient(recipientId);
+			service.deleteBTProject(BTProjectId);
 			RunningSuccessView.showSuccess("삭제 성공!!!!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
