@@ -37,7 +37,5 @@ public class Test1 {
 		student4.method2();
 		
 		
-		
-		
 	}
 }
