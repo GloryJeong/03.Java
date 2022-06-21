@@ -15,10 +15,15 @@ public class Ex01ArrayList {
 		arr1.add(new Student("Java",1,"Junior"));
 		arr1.add(3);
 		arr1.add("Java");
+		arr1.stream().forEach(v->{
+			if(v instanceof String) {
+				System.out.println("!!");
+			}
+		});
 		
 		// get : 원소 객체를 반환
 //		System.out.println(arr1.get(0));
-		System.out.println(arr1);
+//		System.out.println(arr1.get());
 		
 		// size : 객체 수 반환
 		System.out.println(arr1.size());
@@ -33,12 +38,17 @@ public class Ex01ArrayList {
 		arr2.add("Java3");
 		arr2.add("Java4");
 		arr2.add("Java5");
-		
+		ArrayList<?> arr3 = arr2;
 		
 		// remove : 해당 인덱스 객체 삭제
 		// 삭제시 정렬됨
 		arr2.remove(2);
 		System.out.println(arr2);
+		arr2.stream().forEach(v->{
+			if(v instanceof String) {
+				System.out.println("!!");
+			}
+		});
 		
 		// for 출력?
 //		for(String arr:arr2.size()) {
